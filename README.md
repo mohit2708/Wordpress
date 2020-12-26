@@ -77,7 +77,8 @@ wp_enqueue_script('my_amazing_script');
 ### Ques. How to call a Site title & description? 
 ```php
 <?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>  (OR)
-<?php bloginfo( 'name' ); ?>
+<?php bloginfo( 'name' ); ?> // For Site Name
+<?php bloginfo( 'description' ); ?> // For Tag line or description
 ```
 
 ### Ques. How to set logo dynamically?
