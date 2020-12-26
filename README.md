@@ -428,6 +428,34 @@ function ms_redirect_after_logout(){
 }
 ```
 
+### Ques. Displaying Logged-In User Name in Wordpress Menu?
+=============Apprence-> menu-> custom_link.=====================
+ #profile_name# 
+==============function.php============
+```php
+function give_profile_name($atts){
+    $user=wp_get_current_user();
+    $name=$user->user_firstname; 
+    return $name;
+}
+
+add_shortcode('profile_name', 'give_profile_name');
+
+add_filter( 'wp_nav_menu_objects', 'my_dynamic_menu_items' );
+function my_dynamic_menu_items( $menu_items ) {
+    foreach ( $menu_items as $menu_item ) {
+        if ( '#profile_name#' == $menu_item->title ) {
+            global $shortcode_tags;
+            if ( isset( $shortcode_tags['profile_name'] ) ) {
+                // Or do_shortcode(), if you must.
+                $menu_item->title = call_user_func( $shortcode_tags['profile_name'] );
+            }    
+        }
+    }
+
+    return $menu_items;
+} 
+```
 
 
 
