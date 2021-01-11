@@ -430,10 +430,12 @@ function ms_redirect_after_logout(){
 ```
 
 ### Ques. Displaying Logged-In User Name in Wordpress Menu?
+```
 =============Apprence-> menu-> custom_link.=====================
  #profile_name# 
-==============function.php============
+```
 ```php
+==============function.php============
 function give_profile_name($atts){
     $user=wp_get_current_user();
     $name=$user->user_firstname; 
