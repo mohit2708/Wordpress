@@ -15,6 +15,7 @@
 |11 | [How to disable all updates Plugin & Theme?](#ques-How-to-disable-all-updates-Plugin-&-Theme)|
 |11 | [Author](#Author)|
 |   | [Rearrange the admin menu](#ques-Rearrange-the-admin-menu)|
+|   | [Logout Redirection](#ques-logout-redirection)|
 
 
 ### Ques. What Is WordPress?
@@ -474,6 +475,14 @@ function my_dynamic_menu_items( $menu_items ) {
   add_filter('menu_order', 'custom_menu_order');
 ```
 
+### Ques. Logout Redirection?
+```
+add_action( 'wp_logout', 'redirect_after_logout');
+function redirect_after_logout(){
+  wp_redirect( home_url('login') );
+  exit();
+}
+```
 
 
 
