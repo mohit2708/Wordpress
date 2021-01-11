@@ -14,6 +14,7 @@
 |10 | [How to call widget section](#ques-How-to-call-widget-section)|
 |11 | [How to disable all updates Plugin & Theme?](#ques-How-to-disable-all-updates-Plugin-&-Theme)|
 |11 | [Author](#Author)|
+|   | [Rearrange the admin menu](#ques-Rearrange-the-admin-menu)|
 
 
 ### Ques. What Is WordPress?
@@ -455,6 +456,20 @@ function my_dynamic_menu_items( $menu_items ) {
 
     return $menu_items;
 } 
+```
+### Ques. Rearrange the admin menu?
+```php
+ // Rearrange the admin menu
+  function custom_menu_order($menu_ord) {
+    if (!$menu_ord) return true;
+    return array(
+      'index.php', // page
+      'edit.php?post_type=slider', // Custom type one
+    );
+  }
+
+  add_filter('custom_menu_order', 'custom_menu_order'); // Activate custom_menu_order
+  add_filter('menu_order', 'custom_menu_order');
 ```
 
 
