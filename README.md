@@ -1394,6 +1394,20 @@ if(isset($_POST['Updatebutton']))
 }
 ```
 
+### Edit data in form
+```php
+if (isset($_GET['edit'])) {
+  $id = $_GET['edit'];
+  $record = $wpdb->get_results( "SELECT * FROM table_name where id=$id");
+  foreach ($record as $key => $value) {
+    $varibale              = $value->input_name;
+    $varibale              = $value->input_name;
+    $Recipe_exp           = explode(',',$value->recipe);
+    $img_path             = home_url().'/wp-content/themes/mytheme/img/'.$value->pro_img;
+  }
+}
+```
+
 
 
 ### Some Link
