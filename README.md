@@ -1280,6 +1280,64 @@ margin-left: 7px;
 }
   </style>
 ```
+### form update and image update in databse and folder 
+```php
+if(isset($_POST['Updatebutton']))
+   {
+      $id = $_POST['id'];
+
+      $source_path = $_FILES['fileToUpload']['tmp_name'];
+      $name = $_FILES['fileToUpload']['name'];
+      $find_img = mysqli_query($conn, "SELECT pro_img FROM wp_product where id = '$id'");
+      $product_img = mysqli_fetch_array($find_img);
+
+      if( $name ==""){         
+         $img = $product_img['pro_img'];
+      }else{
+         $rand = time().'_';
+         $des_path =ABSPATH."wp-content/themes/mytheme/img/" . $rand.$name;
+         move_uploaded_file($source_path,$des_path);
+         $img = $rand.$name;
+         unlink(ABSPATH."wp-content/themes/mytheme/img/" . $product_img['pro_img']);
+      }
+      $product_name        = trim($_POST['product_name']);
+      $types_of_pro        = $_POST['types_of_pro'];
+      $product_description = $_POST['product_description'];
+      $recipe              = implode(',', $_POST['recipe']);
+      $ingredients         = $_POST['ingredients'];
+      $nutrition           = $_POST['nutrition'];
+
+      global $wpdb;
+
+      $proUpdate = $wpdb->query($wpdb->prepare(
+          "UPDATE wp_product SET 
+              product_name = '$product_name', 
+              pro_cat = '$types_of_pro',
+              product_description = '$product_description',
+              recipe = '$recipe',
+              ingredients = '$ingredients',
+              nutrition = '$nutrition',
+              pro_img = '$img'
+              WHERE id = $id"
+      ));        
+       
+      $wpdb->query('DELETE  FROM wp_product_recipe  WHERE product_id = "'.$id.'"');
+
+         $recipe_table = "wp_product_recipe";
+         foreach ($_POST['recipe'] as $key => $value) {
+            $wpdb->insert( $recipe_table, array(
+            'product_id'      => $id,
+            'recipe_id'      => $value
+            ));
+         }
+      if(count($proUpdate) > 0){
+         $_SESSION['msg1'] = "Product updated!"; 
+         wp_redirect( home_url('product-listing') );
+      }
+}
+```
+
+
 ### Form Insert and inser data another table and image & name already exists
 ```php
    if(isset($_POST['SubmitButton']))
