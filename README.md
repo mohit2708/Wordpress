@@ -1280,6 +1280,63 @@ margin-left: 7px;
 }
   </style>
 ```
+### Form Insert and inser data another table and image & name already exists
+```php
+   if(isset($_POST['SubmitButton']))
+   {  
+      global $wpdb;
+      $product_table = "wp_product";
+
+      $source_path = $_FILES['fileToUpload']['tmp_name'];
+      $name = $_FILES['fileToUpload']['name'];
+      $rand = time().'_';
+      $des_path =ABSPATH."wp-content/themes/mytheme/img/" . $rand.$name;
+      move_uploaded_file($source_path,$des_path);
+      $img = $rand.$name;
+      $barcode             = $_POST['barcode'];
+      $product_name        = trim($_POST['product_name']);
+      $types_of_pro        = $_POST['types_of_pro'];
+      $product_description = $_POST['product_description'];
+      $recipe              = implode(',', $_POST['recipe']); 
+
+      $find_barcode = $wpdb->get_results( "SELECT barcode FROM $product_table where barcode = '$barcode'");
+      $find_product = $wpdb->get_results( "SELECT product_name FROM $product_table where product_name = '$product_name'");
+
+      if(count($find_barcode) > 0){
+         $barcodemsg = 'Barcode Already exists!';
+      }else if(count($find_product) > 0){
+         $product_msg = 'Product Already exists!';
+      }else{
+         $sql = $wpdb->insert( $product_table, array(
+         'user_id'      => $getuserid,
+         'barcode'      => $barcode,
+         'product_name' => $product_name,
+         'pro_cat'      => $types_of_pro,
+         'product_description' => $product_description,
+         'recipe'       => $recipe,
+         'pro_img'      => $img
+      ));
+         // Last Insert ID
+         $lastid = $wpdb->insert_id;
+         // Insert Data into Product_Recipe Table
+         $recipe_table = "wp_product_recipe";
+         $recipe1 = $_POST['recipe'];
+         foreach ($recipe1 as $key => $value) {
+            $wpdb->insert( $recipe_table, array(
+            'product_id'      => $lastid,
+            'recipe_id'      => $value
+            ));
+         }
+	      if(count($sql) > 0){
+		 $_SESSION['msg1'] = "New Product created successfully !"; 
+		 wp_redirect( home_url('product-listing') );
+
+	      }
+      }
+}
+```
+
+
 
 ### Some Link
 https://bootsnipp.com/snippets/featured/image-gallery-with-fancybox (light box image gellery)<br>
