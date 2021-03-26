@@ -324,7 +324,7 @@ add_filter('use_block_editor_for_post', '__return_false');
 
  
 ### How do you enable debug mode in WP?
-You can enable debug mode in WP by editing wp-config.php file and changing WP_DEBUG constant value to true
+You can enable __debug mode__ in WP by editing __wp-config.php__ file and changing __WP_DEBUG__ constant value to __true__.
  
 ### Ques. How to create a folder if it doesn't already exist in Wordpres?
 ```php
