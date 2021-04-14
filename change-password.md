@@ -1,3 +1,4 @@
+![changePassword](https://github.com/mohit2708/Wordpress/blob/wordpress-codeing/img/changepassword.PNG)
 ```php
 <?php
 /* Template Name: Change Password */ 
