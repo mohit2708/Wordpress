@@ -1,3 +1,4 @@
+https://codepen.io/Sohail05/pen/yOpeBm
 ![changePassword](https://github.com/mohit2708/Wordpress/blob/wordpress-codeing/img/changepassword.PNG)
 ```php
 <?php
@@ -127,7 +128,7 @@ if( $_POST['submitpassword'] )
   $(".toggle-password, .toggle-password1, .toggle-password2").click(function() {
   $(this).toggleClass("fa-eye fa-eye-slash");
   var input = $($(this).attr("toggle"));
-  if (input.attr("type") == "passwo rd") {
+  if (input.attr("type") == "password") {
     input.attr("type", "text");
   } else {
     input.attr("type", "password");
