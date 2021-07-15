@@ -777,6 +777,14 @@ if(wp_mail( $to, $subject, $message, $headers ))
   }
    ?>
 ```
+### After 3 Post Clearfix
+```php
+ <?php $i++; if($i==3){ ?> <div class="clearfix"></div> <?php $i=0; } ?>
+```
+### Default editior
+```php
+add_filter('use_block_editor_for_post', '__return_false');
+```
 
 
 <form action="#" method="post">
