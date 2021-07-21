@@ -430,6 +430,12 @@ function ms_redirect_after_logout(){
 }
 ```
 
+### Logout Link
+```php
+http://mywebsitenamehere.com/wp-login.php?action=logout
+http://www.website.com/?customer-logout=true
+```
+
 ### Ques. Displaying Logged-In User Name in Wordpress Menu?
 ```
 =============Apprence-> menu-> custom_link.=====================
@@ -474,17 +480,6 @@ function my_dynamic_menu_items( $menu_items ) {
   add_filter('custom_menu_order', 'custom_menu_order'); // Activate custom_menu_order
   add_filter('menu_order', 'custom_menu_order');
 ```
-
-### Ques. Logout Redirection?
-```
-add_action( 'wp_logout', 'redirect_after_logout');
-function redirect_after_logout(){
-  wp_redirect( home_url('login') );
-  exit();
-}
-```
-
-
 
 ================================
  <?php $i++;
@@ -805,12 +800,6 @@ echo '<i class="fa fa-star " aria-hidden="true"></i> ';
 ```php
 <?php if (is_page(20) ){?> <?php } ?>
 <?php if( $post->ID == 172) { ?> <?php } ?>
-```
-
-### Logout Link
-```php
-http://mywebsitenamehere.com/wp-login.php?action=logout
-http://www.website.com/?customer-logout=true
 ```
 
 <form action="#" method="post">
