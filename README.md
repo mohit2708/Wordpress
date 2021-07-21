@@ -807,6 +807,12 @@ echo '<i class="fa fa-star " aria-hidden="true"></i> ';
 <?php if( $post->ID == 172) { ?> <?php } ?>
 ```
 
+### Logout Link
+```php
+http://mywebsitenamehere.com/wp-login.php?action=logout
+http://www.website.com/?customer-logout=true
+```
+
 <form action="#" method="post">
    <div>
   <label for="recieved-date">Date Recieved:</label>
