@@ -1,5 +1,5 @@
 <?php 
-
+//Remove “Update Cart” button and Do It Automatically on Quantity Change
   //function.php
 add_action( 'wp_footer', 'cart_update_qty_script' );
 function cart_update_qty_script() {
