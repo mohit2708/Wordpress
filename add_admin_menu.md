@@ -1,5 +1,6 @@
 ![admin_menu](https://github.com/mohit2708/Wordpress/blob/wordpress-codeing/img/admin_menu.PNG)
 ```php
+// in function.php
 add_action( 'admin_menu', 'my_admin_menu' );
 
 function my_admin_menu() {
