@@ -32,5 +32,38 @@ if(jQuery(".page-id-16406").length){
 }
 <script>
 ```
-##### Refresh page when delete the product on cart page
+##### Add button similar to add to cart button in single product page
+```php
+//function.php
+add_action('woocommerce_after_add_to_cart_button','cmk_additional_button');
+function cmk_additional_button() {
+	echo '<button type="submit" class="button alt">Make an Offer</button>';
+}
+```
+
+##### Add Text Before and After Add to Cart
+```php
+add_action( 'woocommerce_before_add_to_cart_button', 'misha_before_add_to_cart_btn' );
+function misha_before_add_to_cart_btn(){
+	echo 'Some custom text here';
+}
+```
+```php
+add_action( 'woocommerce_after_add_to_cart_button', 'misha_after_add_to_cart_btn' );
+function misha_after_add_to_cart_btn(){
+	echo 'Some custom text here';
+}
+```
+
+##### On Shop / Product Category Pages
+```php
+add_filter( 'woocommerce_loop_add_to_cart_link', 'misha_before_after_btn', 10, 3 );
+
+function misha_before_after_btn( $add_to_cart_html, $product, $args ){
+	$before = ''; // Some text or HTML here
+	$after = ''; // Add some text or HTML here as well
+
+	return $before . $add_to_cart_html . $after;
+}
+```
 	
