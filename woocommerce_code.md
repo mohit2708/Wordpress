@@ -41,7 +41,7 @@ function cmk_additional_button() {
 }
 ```
 
-##### Add Text Before and After Add to Cart
+##### Add Text Before and After Add to Cart button
 ```php
 add_action( 'woocommerce_before_add_to_cart_button', 'misha_before_add_to_cart_btn' );
 function misha_before_add_to_cart_btn(){
@@ -55,7 +55,7 @@ function misha_after_add_to_cart_btn(){
 }
 ```
 
-##### On Shop / Product Category Pages
+##### Add text On Shop / Product Category Pages
 ```php
 add_filter( 'woocommerce_loop_add_to_cart_link', 'misha_before_after_btn', 10, 3 );
 
