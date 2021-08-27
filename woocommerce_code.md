@@ -1,5 +1,5 @@
-<?php 
-//Remove “Update Cart” button and Do It Automatically on Quantity Change
+##### Remove “Update Cart” button and Do It Automatically on Quantity Change
+```php
   //function.php
 add_action( 'wp_footer', 'cart_update_qty_script' );
 function cart_update_qty_script() {
@@ -19,9 +19,10 @@ function cart_update_qty_script() {
 .woocommerce input[name="update_cart"] {
 	display: none;
 }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// Refresh page when delete the product on cart page
+```
+
+##### Refresh page when delete the product on cart page
+```php
 // in footer.php
 <script>
 if(jQuery(".page-id-16406").length){
@@ -30,3 +31,6 @@ if(jQuery(".page-id-16406").length){
 	});
 }
 <script>
+```
+##### Refresh page when delete the product on cart page
+	
