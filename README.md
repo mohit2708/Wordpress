@@ -1430,7 +1430,23 @@ if (isset($_GET['edit'])) {
   }
 }
 ```
+### Mail Fuction in php
+```php
+<?php
+$toemail = "mksaxena27@gmail.com";
+$subject = "Test Email";
+$body = "Hi, This is test email send by PHP Script";
 
+$headers = 'From: xyz@gmail.com'       . "\r\n" .
+                 'Reply-To: zyz@gmail.com' . "\r\n" .
+                 'X-Mailer: PHP/' . phpversion();
+if (mail($toemail, $subject, $body, $headers)) {
+echo "Email successfully sent to $toemail...";
+} else {
+echo "Email sending failed...";
+} 
+?>
+```
 
 
 ### Some Link
